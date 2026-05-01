@@ -1,0 +1,21 @@
+{
+  "name": "bot-teste",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "api-placa-fipe": "^1.0.7",
+    "axios": "^1.6.0",
+    "cep-promise": "^4.4.0",
+    "cnpj-consulta": "^1.0.0",
+    "consulta-cnpj-br": "^1.0.1",
+    "discord.js": "^14.11.0",
+    "ip-promise": "^1.0.0",
+    "node-fetch": "^3.3.2"
+  }
+}
