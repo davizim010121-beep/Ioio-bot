@@ -1,5 +1,4 @@
 const { EmbedBuilder, ModalBuilder, TextInputBuilder, ActionRowBuilder} = require("discord.js");
-const { consultarPlaca } = require("api-placa-fipe");
 const {consultar} = require('consulta-cnpj-br');
 const cep = require('cep-promise');
 const ip = require('ip-promise');
@@ -670,237 +669,237 @@ try {
 
 
         }
-        if(interaction.isModalSubmit() && interaction.customId === "modal_placa"){
-            const placa = interaction.fields.getTextInputValue("placa_text");
-            const user = interaction.user
+    //     if(interaction.isModalSubmit() && interaction.customId === "modal_placa"){
+    //         const placa = interaction.fields.getTextInputValue("placa_text");
+    //         const user = interaction.user
             
 
-    interaction.reply({
-        content:"Aguarde um momento, estamos consultando sua placa",
-        ephemeral:true
-    })
+    // interaction.reply({
+    //     content:"Aguarde um momento, estamos consultando sua placa",
+    //     ephemeral:true
+    // })
 
-            consultarPlaca(`${placa}`).then(async (dados) => {
+    //         consultarPlaca(`${placa}`).then(async (dados) => {
                 
 
-                canau.send({
-                    content:"Nova Consulta encontrada!",
-                    embeds:[
-                        new EmbedBuilder() 
-                        .setTitle("*「 C O N S U L T A  D E  P L A C A 」*")
-                        .setDescription(`**O Usuario ${interaction.user}, consultou a placa ${placa}, aqui está a consulta:**`)
-                        .addFields(
-                            {
-                                name:"Marca",
-                                value:`${dados.marca}`,
-                                inline:true
-                            },
-                            {
-                                name:"Modelo",
-                                value:`${dados.modelo}`,
-                                inline:true
-                            },
-                            {
-                                name:"Ano de Fabricação",
-                                value:`${dados.anoFabricacao}`,
-                                inline:true
-                            },
-                            {
-                                name:"Ano Modelo",
-                                value:`${dados.anoModelo}`,
-                                inline:true
-                            },
-                            {
-                                name:"Cor",
-                                value:`${dados.cor}`,
-                                inline:true
-                            },
-                            {
-                                name:"Cilindrada",
-                                value:`${dados.cilindrada}`,
-                                inline:true
-                            },
-                            {
-                                name:"Potencia",
-                                value:`${dados.potencia}`,
-                                inline:true
-                            },
-                            {
-                                name:"combustivel",
-                                value:`${dados.combustivel}`,
-                                inline:true
-                            },
-                            {
-                                name:"Chassi",
-                                value:`${dados.chassi}`,
-                                inline:true
-                            },
-                            {
-                                name:"Estado",
-                                value:`${dados.uf}`,
-                                inline:true
-                            },
-                            {
-                                name:"municipio",
-                                value:`${dados.municipio}`,
-                                inline:true
-                            },
-                            {
-                                name:"Importado?",
-                                value:`${dados.importado}`,
-                                inline:true
-                            },
-                            {
-                                name:"Peso Bruto",
-                                value:`${dados.pesoBrutoTotal}`,
-                                inline:true
-                            },
-                            {
-                                name:"Capacidade Tração",
-                                value:`${dados.capMaxTracao}`,
-                                inline:true
-                            },
-                            {
-                                name:"tipo de veiculo",
-                                value:`${dados.tipoVeiculo}`,
-                                inline:true
-                            },
-                            {
-                                name:"Especie de Veiculo",
-                                value:`${dados.especieVeiculo}`,
-                                inline:true
-                            },
-                            {
-                                name:"Quantia de Passageiros",
-                                value:`${dados.passageiros}`,
-                                inline:true
-                            },
-                            {
-                                name:"Segmento",
-                                value:`${dados.segmento}`,
-                                inline:true
-                            },
-                            {
-                                name:"Capacidade de Carga",
-                                value:`${dados.capacidadeCarga}`,
-                                inline:true
-                            },
-                        )
-                    ] 
-                    })
-             user.send({
-            embeds:[
-                new EmbedBuilder()
-                .setTitle("*「 C O N S U L T A  D E  P L A C A 」*")
-                .addFields(
-                    {
-                        name:"Marca",
-                        value:`${dados.marca}`,
-                        inline:true
-                    },
-                    {
-                        name:"Modelo",
-                        value:`${dados.modelo}`,
-                        inline:true
-                    },
-                    {
-                        name:"Ano de Fabricação",
-                        value:`${dados.anoFabricacao}`,
-                        inline:true
-                    },
-                    {
-                        name:"Ano Modelo",
-                        value:`${dados.anoModelo}`,
-                        inline:true
-                    },
-                    {
-                        name:"Cor",
-                        value:`${dados.cor}`,
-                        inline:true
-                    },
-                    {
-                        name:"Cilindrada",
-                        value:`${dados.cilindrada}`,
-                        inline:true
-                    },
-                    {
-                        name:"Potencia",
-                        value:`${dados.potencia}`,
-                        inline:true
-                    },
-                    {
-                        name:"combustivel",
-                        value:`${dados.combustivel}`,
-                        inline:true
-                    },
-                    {
-                        name:"Chassi",
-                        value:`${dados.chassi}`,
-                        inline:true
-                    },
-                    {
-                        name:"Estado",
-                        value:`${dados.uf}`,
-                        inline:true
-                    },
-                    {
-                        name:"municipio",
-                        value:`${dados.municipio}`,
-                        inline:true
-                    },
-                    {
-                        name:"Importado?",
-                        value:`${dados.importado}`,
-                        inline:true
-                    },
-                    {
-                        name:"Peso Bruto",
-                        value:`${dados.pesoBrutoTotal}`,
-                        inline:true
-                    },
-                    {
-                        name:"Capacidade Tração",
-                        value:`${dados.capMaxTracao}`,
-                        inline:true
-                    },
-                    {
-                        name:"tipo de veiculo",
-                        value:`${dados.tipoVeiculo}`,
-                        inline:true
-                    },
-                    {
-                        name:"Especie de Veiculo",
-                        value:`${dados.especieVeiculo}`,
-                        inline:true
-                    },
-                    {
-                        name:"Quantia de Passageiros",
-                        value:`${dados.passageiros}`,
-                        inline:true
-                    },
-                    {
-                        name:"Segmento",
-                        value:`${dados.segmento}`,
-                        inline:true
-                    },
-                    {
-                        name:"Capacidade de Carga",
-                        value:`${dados.capacidadeCarga}`,
-                        inline:true
-                    },
-                )
-            ] 
-            }).then((msg) => {
-            interaction.editReply({
-            content:`Sua Consulta foi enviada com sucesso!, verifique sua dm: ${msg.url}`})
+    //             canau.send({
+    //                 content:"Nova Consulta encontrada!",
+    //                 embeds:[
+    //                     new EmbedBuilder() 
+    //                     .setTitle("*「 C O N S U L T A  D E  P L A C A 」*")
+    //                     .setDescription(`**O Usuario ${interaction.user}, consultou a placa ${placa}, aqui está a consulta:**`)
+    //                     .addFields(
+    //                         {
+    //                             name:"Marca",
+    //                             value:`${dados.marca}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Modelo",
+    //                             value:`${dados.modelo}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Ano de Fabricação",
+    //                             value:`${dados.anoFabricacao}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Ano Modelo",
+    //                             value:`${dados.anoModelo}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Cor",
+    //                             value:`${dados.cor}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Cilindrada",
+    //                             value:`${dados.cilindrada}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Potencia",
+    //                             value:`${dados.potencia}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"combustivel",
+    //                             value:`${dados.combustivel}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Chassi",
+    //                             value:`${dados.chassi}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Estado",
+    //                             value:`${dados.uf}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"municipio",
+    //                             value:`${dados.municipio}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Importado?",
+    //                             value:`${dados.importado}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Peso Bruto",
+    //                             value:`${dados.pesoBrutoTotal}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Capacidade Tração",
+    //                             value:`${dados.capMaxTracao}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"tipo de veiculo",
+    //                             value:`${dados.tipoVeiculo}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Especie de Veiculo",
+    //                             value:`${dados.especieVeiculo}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Quantia de Passageiros",
+    //                             value:`${dados.passageiros}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Segmento",
+    //                             value:`${dados.segmento}`,
+    //                             inline:true
+    //                         },
+    //                         {
+    //                             name:"Capacidade de Carga",
+    //                             value:`${dados.capacidadeCarga}`,
+    //                             inline:true
+    //                         },
+    //                     )
+    //                 ] 
+    //                 })
+    //          user.send({
+    //         embeds:[
+    //             new EmbedBuilder()
+    //             .setTitle("*「 C O N S U L T A  D E  P L A C A 」*")
+    //             .addFields(
+    //                 {
+    //                     name:"Marca",
+    //                     value:`${dados.marca}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Modelo",
+    //                     value:`${dados.modelo}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Ano de Fabricação",
+    //                     value:`${dados.anoFabricacao}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Ano Modelo",
+    //                     value:`${dados.anoModelo}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Cor",
+    //                     value:`${dados.cor}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Cilindrada",
+    //                     value:`${dados.cilindrada}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Potencia",
+    //                     value:`${dados.potencia}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"combustivel",
+    //                     value:`${dados.combustivel}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Chassi",
+    //                     value:`${dados.chassi}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Estado",
+    //                     value:`${dados.uf}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"municipio",
+    //                     value:`${dados.municipio}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Importado?",
+    //                     value:`${dados.importado}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Peso Bruto",
+    //                     value:`${dados.pesoBrutoTotal}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Capacidade Tração",
+    //                     value:`${dados.capMaxTracao}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"tipo de veiculo",
+    //                     value:`${dados.tipoVeiculo}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Especie de Veiculo",
+    //                     value:`${dados.especieVeiculo}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Quantia de Passageiros",
+    //                     value:`${dados.passageiros}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Segmento",
+    //                     value:`${dados.segmento}`,
+    //                     inline:true
+    //                 },
+    //                 {
+    //                     name:"Capacidade de Carga",
+    //                     value:`${dados.capacidadeCarga}`,
+    //                     inline:true
+    //                 },
+    //             )
+    //         ] 
+    //         }).then((msg) => {
+    //         interaction.editReply({
+    //         content:`Sua Consulta foi enviada com sucesso!, verifique sua dm: ${msg.url}`})
             
-            }
-            )
+    //         }
+    //         )
 
-            }).catch(async (err) => {
-            console.log(err)
-            interaction.editReply({content: 'Placa não encontrada.', ephemeral:true})
-            })
-        }
+    //         }).catch(async (err) => {
+    //         console.log(err)
+    //         interaction.editReply({content: 'Placa não encontrada.', ephemeral:true})
+    //         })
+    //     }
 
     }}
