@@ -1,13 +1,10 @@
-
 const Discord = require("discord.js")
-
-const config = require("./config.json")
 
 const client = new Discord.Client({ 
   intents: [ 
-Discord.GatewayIntentBits.Guilds
-       ]
-    });
+    Discord.GatewayIntentBits.Guilds
+  ]
+});
 
 module.exports = client
 
@@ -25,20 +22,18 @@ client.on('interactionCreate', (interaction) => {
 
    }
 })
+
 console.clear()
+
 client.on('ready', () => {
   console.log(`🔥 Estou online em ${client.user.username}!`)
 })
-
 
 client.slashCommands = new Discord.Collection()
 
 require('./handler')(client)
 
-client.login(config.token)
+// 🔥 TOKEN DA RENDER
+client.login(process.env.TOKEN)
 
 client.on("interactionCreate", require('./events/consultas').execute);
-
-
-
-
